@@ -1,0 +1,26 @@
+<h1 class= "text-center mt-4 mb-4">Alpha Blogger</h1>
+
+<% @users.each do |userData| %>
+  <div>
+    <div class="card text-center shadow mb-5 bg-white rounded">
+    <div class="card-header">
+    <strong><%=userData.username%></strong>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><strong><%=userData.email%></strong></h5>
+
+      <p class="card-text"><%=userData.articles.count%> Article(s)</p>
+
+      <a href="<%=user_path(userData)%>" class="btn btn-outline-success" >View Profile</a>
+      <% if (logged_in? && (userData.id == session[:user_id])) %>
+        <a href="<%=edit_user_path(userData)%>" class="btn btn-outline-primary">Edit Profile</a>
+      <% end %>
+    </div>
+    <div class="card-footer text-muted">
+      <small><p>Joined <%=time_ago_in_words(userData.created_at)%> ago</p></small>
+    </div>
+    </div>
+    <div id="spacing">
+    </div>
+    </div>
+<% end %>

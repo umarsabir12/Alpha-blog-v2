@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
 
-  Rails.application.routes.draw do
-
     root 'pages#home'
     
     get 'about', to: 'pages#about'
     
-    resources :articles, only: [:show, :index, :new, :create, :edit, :update]
+    get 'signup', to: 'users#new'
+
+    resources :articles, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+
+    resources :users, except: [:new]  
+
+    get 'login', to: 'sessions#new'
+
+    post 'login', to:'sessions#create'
     
-    end
+    delete 'logout', to: 'sessions#destroy'
+    
+    resources :categories, except: [:destroy]
+
 end

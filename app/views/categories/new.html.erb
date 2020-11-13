@@ -1,0 +1,26 @@
+<div class="container">
+<h1>New category Page </h1>
+
+<% if @category.errors.any? %> 
+  <h2>The following errors prevented the category from being saved</h2> 
+  <ul> 
+    <% @category.errors.full_messages.each do |msg| %> 
+      <li><%= msg %></li> 
+    <% end %> 
+  </ul>
+<% end %> 
+
+
+    <%= form_with scope: :category, url: "/categories", local: true do |f| %>
+     <p>
+      <%= f.label :category_name %>
+      <%= f.text_field  :name, class: "form-control mt-2", placeholder: "Enter your username" %>
+     </p>
+     
+     
+      
+     <%= f.submit "Enter Category"  %> 
+   </p>
+
+   <% end %>
+   </div>

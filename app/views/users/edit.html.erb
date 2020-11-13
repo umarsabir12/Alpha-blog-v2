@@ -1,0 +1,25 @@
+<h1>Edit your profile</h1>
+
+
+<%= form_with scope: :user, url: "/users", local: true do |f| %>
+  <p>
+   <%= f.label :username %>
+   <%= f.text_field  :username, class: "form-control mt-2", placeholder: "Enter your username" %>
+  </p>
+  
+  
+  <p>
+    <%= f.label :Email %><br/> 
+    <%= f.email_field :email, class: "form-control mt-2", placeholder: " Enter your Email address" %> 
+  </p>
+  <p>
+      <%= f.label :Password %>
+      <%= f.password_field :password, class: "form-control mt-2", placeholder: "Enter your password" %>
+     
+  </p>    
+  
+  <p>  
+  <%= f.submit(@user.new_record? ? "Sign up": "Update account") %> 
+</p>
+
+<% end %>

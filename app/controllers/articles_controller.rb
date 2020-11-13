@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   
   def index
   @article = Article.all
+  @user = User.all
   end
   
   def new
@@ -36,9 +37,15 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       render 'edit'
-    end
+     end
     end
 
-  
+    def destroy
+      Article.delete(params[:id])
+      if @article.destroy
+        flash[:notice] = "Article deleted succesfully "
+      else
+      redirect_to '/articles'
+      end
+    end
 end
-``

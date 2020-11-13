@@ -1,0 +1,36 @@
+<h1 class= "text-center mt-4" >User Signup page </h1>
+
+ <div class="container">
+<% if @user.errors.any? %> 
+  <h2>The following errors prevented the article from being saved</h2> 
+  <ul> 
+    <% @user.errors.full_messages.each do |msg| %> 
+      <li><%= msg %></li> 
+    <% end %> 
+  </ul>
+<% end %> 
+
+
+    <%= form_with scope: :user, url: "/users", class: "shadow p-3 mb-3 bg-info rounded", local: true do |f| %>
+     <p>
+      <%= f.label :username %>
+      <%= f.text_field  :username, class: "form-control mt-2", placeholder: "Enter your username" %>
+     </p>
+     
+     
+     <p>
+       <%= f.label :Email %><br/> 
+       <%= f.email_field :email, class: "form-control mt-2", placeholder: " Enter your Email address" %> 
+     </p>
+     <p>
+         <%= f.label :Password %>
+         <%= f.password_field :password, class: "form-control mt-2", placeholder: "Enter your password" %>
+        
+     </p>    
+     
+     <p>  
+   <div class = " form-group row justify-content-center mt-3"> <%= f.submit "Signup", class: "btn btn-outline-light btn-lg " %>  </div>
+     </p>
+
+   <% end %>
+   </div>
